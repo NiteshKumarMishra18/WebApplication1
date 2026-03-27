@@ -24,7 +24,7 @@ pipeline{
 		stage('Build Docker Image'){
 			steps{
 			dir('WebApplication1') {
-				bat 'docker build -t NiteshKMishra/WebApplication1:latest1 .'
+				bat 'docker build -t NiteshKMishra/webapplication1:latest1 .'
 				}
 			}
 		}
@@ -38,7 +38,7 @@ pipeline{
 		stage('Tag Docker Image'){
 			steps{
 			dir('WebApplication1') {
-				bat 'docker tag NiteshKMishra/WebApplication1 NiteshKMishra/WebApplication1:latest'
+				bat 'docker tag NiteshKMishra/webapplication1 NiteshKMishra/webapplication1:latest'
 				}
 			}
 		}
