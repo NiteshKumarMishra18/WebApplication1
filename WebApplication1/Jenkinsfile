@@ -16,7 +16,9 @@ pipeline{
 		}
 		stage('Publish'){
 			steps{
+			dir('/WebApplication1/tree/master/WebApplication1') {
 				bat 'dotnet publish WebApplication1.csproj -o publish'
+				}
 			}
 		}
 	}
