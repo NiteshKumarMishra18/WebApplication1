@@ -1,0 +1,19 @@
+pipeline{
+	agent any
+	stages{
+		stage('CheckOut'){
+			steps{
+				Checkout SCM
+			}
+		}
+		stage('Build'){
+			steps{
+				bat 'dotnet build WebApplication1.csproj'
+			}
+		}
+		stage('Publish'){
+			steps{
+				bat 'dotnet publish WebApplication1.csproj -o publish'
+			}
+		}
+	}
