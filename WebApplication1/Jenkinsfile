@@ -8,7 +8,7 @@ pipeline{
 		}
 		stage('Build'){
 			steps{
-			dir('WebApplication1/WebApplication1') {
+			dir('WebApplication1') {
     bat 'dotnet build WebApplication1.csproj'
 }
 				
@@ -16,7 +16,7 @@ pipeline{
 		}
 		stage('Publish'){
 			steps{
-			dir('WebApplication1/WebApplication1') {
+			dir('WebApplication1') {
 				bat 'dotnet publish WebApplication1.csproj -o publish'
 				}
 			}
