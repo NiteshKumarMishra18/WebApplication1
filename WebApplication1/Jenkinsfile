@@ -24,21 +24,21 @@ pipeline{
 		stage('Build Docker Image'){
 			steps{
 			dir('WebApplication1') {
-				bat 'docker build -t NiteshKMishra/webapplication1:latest1 .'
+				bat 'docker build -t niteshkmishra/webapplication1:latest1 .'
 				}
 			}
 		}
 		stage('Login to docker hub'){
 			steps{
 			dir('WebApplication1') {
-				bat 'docker login -u NiteshKMishra -p Docker@2024'
+				bat 'docker login -u niteshkmishra -p Docker@2024'
 				}
 			}
 		}
 		stage('Tag Docker Image'){
 			steps{
 			dir('WebApplication1') {
-				bat 'docker tag NiteshKMishra/webapplication1 NiteshKMishra/webapplication1:latest'
+				bat 'docker tag niteshkmishra/webapplication1 niteshkmishra/webapplication1:latest'
 				}
 			}
 		}
