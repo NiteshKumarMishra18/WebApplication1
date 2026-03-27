@@ -9,7 +9,7 @@ pipeline{
 		stage('Build'){
 			steps{
 			dir('/WebApplication1/tree/master/WebApplication1') {
-    bat 'dotnet build WebApplication1.csproj
+    bat 'dotnet build WebApplication1.csproj'
 }
 				
 			}
