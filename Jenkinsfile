@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    environment {
+		ImageName = 'niteshkmishra/webapplication1'
+        ImageTag = "v${env.BUILD_NUMBER}"
+	}
     stages {
     stage('checkout') {
             steps {
@@ -19,7 +22,7 @@ pipeline {
         }
         stage('builddockerimage') {
             steps {
-                bat 'docker build -t niteshkmishra/webapplication1:latest .'
+                bat 'docker build -t niteshkmishra/webapplication1:%ImageTag% .'
             }
         }
         stage('dockerlogin') {
@@ -29,12 +32,26 @@ pipeline {
         }
          stage('tagdockerimage') {
             steps {
-                bat 'docker tag niteshkmishra/webapplication1:latest niteshkmishra/webapplication1:latest1'
+                bat 'docker tag niteshkmishra/webapplication1:%ImageTag% niteshkmishra/webapplication1:latest'
             }
         }
          stage('pushdockerimage') {
             steps {
-                bat 'docker push niteshkmishra/webapplication1:latest'
+                bat 'docker push niteshkmishra/webapplication1:%ImageTag%'
+            }
+        }
+        stage('deploy') {
+            steps {
+                bat '''docker ps -a
+                       docker stop webapplication1-container
+                       docker rm webapplication1-container
+                       docker run -d -p 4999:80 --webapplication1-container niteshkmishra/webapplication1:%ImageTag%'''
+            }
+        }
+
+        stage('clearworkspace') {
+            steps {
+                cleanWs()
             }
         }
     }
