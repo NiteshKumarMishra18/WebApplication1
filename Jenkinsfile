@@ -19,7 +19,7 @@ pipeline {
         }
         stage('builddockerimage') {
             steps {
-                bat 'docker build -t niteshkmishra/webapplication1:latest'
+                bat 'docker build -t niteshkmishra/webapplication1:latest .'
             }
         }
         stage('dockerlogin') {
